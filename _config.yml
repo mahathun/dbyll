@@ -1,33 +1,39 @@
 # visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
 
-paginate: 10 # pagination based on number of posts
-paginate_path: "page:num"
 exclude: ["README.md"] # files to exclude
-highlighter: rogue
+highlighter: rouge
 markdown: kramdown
-disqus: dbyll
-google_analytics: dbyll
-title: dbyll
+# disqus: dbyll
+# google_analytics: dbyll
+title: Developer Name
 
 defaults:
   -
     scope:
       path: "" # empty string for all files
     values:
-      title: dbyll
+      title: Project Title
 
 description: Stylish Jekyll Theme
+githubData:
+  show: true
+  forks: false
+  stared: true
+repositoryName: dan-seminar-subscriber
 author:
-  name: dbyll
-  email: dbyll@ismaildemirbilek.com
-  github: dbtek
-  twitter: dbtek
-  pinterest: asd123
-  linkedin: asd123
-  bio: Your stylish, minimalist theme!
-  email_md5: 726351295ec82e145928582f595aa3aa
+  name: dan
+  email: mahathun.online@gmail.com
+  github: mahathun
+  twitter: mahathun
+  # pinterest: asd123
+  linkedin: dan-mahavithana-50212b68
+  bitbucket: mahathun
+  facebook: mahathun
+  bio: ~ A good programmer looks both ways before crossing an one-way street. ~
+  email_md5:
+  url: http://www.danmahavithana.com
 
-rss_path: feed.xml
+
 categories_path: categories.html
 tags_path: tags.html
 
@@ -35,6 +41,3 @@ tags_path: tags.html
 # sidebar_background_image: https://www.dropbox.com/s/g9h23zrycedxtk5/sky.png?raw=1
 
 BASE_PATH:
-
-gems:
-  - jekyll-paginate

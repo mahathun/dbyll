@@ -34,7 +34,34 @@
     activateTab();
   };
 
+  function scroll(){
+    $(document).bind('scroll',function () {
+      var scrollY = window.scrollY;
+      if(scrollY>102){
+        $('.forkme-div').addClass('forkme-div-scroll');
+      }else{
+        $('.forkme-div').removeClass('forkme-div-scroll');
+
+      }
+
+    });
+  }
+
+  function ajaxCall(){
+
+    $.ajax({
+        url: "https://api.github.com/repos/"+githubGlobalUsername+"/"+githubGlobalRepository,
+        context: document.body
+      }).done(function(data) {
+        console.log(data);
+        $('#gh-count-stars').text(data.stargazers_count);
+        $('#gh-count-forks').text(data.forks_count);
+      });
+  }
+
   // run init on document ready
   $(document).ready(init);
+  $(document).ready(scroll);
+  $(document).ready(ajaxCall);
 
 })(jQuery);

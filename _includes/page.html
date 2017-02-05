@@ -1,5 +1,26 @@
 <div class="page-header">
   <h1>{{ page.title }} {% if page.tagline %} <small>{{ page.tagline }}</small>{% endif %}</h1>
+  <div style="display:flex">
+    <a href="https://www.github.com/{{site.author.github}}/{{site.repositoryName}}/zipball/master/" class="btn btn-small"><i class="fa fa-folder"></i> Download Zip</a>
+    <a href="https://www.github.com/{{site.author.github}}/{{site.repositoryName}}" class="btn btn-small" target="_blank"><i class="fa fa-github"></i> View on GitHub</a>
+
+    <div style="display:inline-block;margin-left:4vw;">
+      <div style="display:inline-block">
+        <a class="gh-btn" class="btn btn-default btn-small" href="#" target="_blank" ><i class="fa fa-star"></i></a>
+        <a class="gh-count" id="gh-count-stars" href="https://www.github.com/{{site.author.github}}/site.repositoryName" target="_blank" style="display: block;"></a>
+      </div>
+
+      <div style="display:inline-block">
+        <a class="gh-btn" class="btn btn-default btn-small" href="#" target="_blank" ><i class="fa fa-code-fork"></i></a>
+        <a class="gh-count" id="gh-count-forks" href="https://www.github.com/{{site.author.github}}/site.repositoryName" target="_blank" style="display: block;">0</a>
+      </div>
+    </div>
+    <div class="forkme-div">
+      <a href="https://www.github.com/{{site.author.github}}/{{site.repositoryName}}" target="_blank" class="btn btn-small">
+        <img src="{{'/assets/media/forkme.png' | relativ_url }}" alt="" class="forkme" />
+      </a>
+    </div>
+  </div>
 </div>
 
 {{ content }}

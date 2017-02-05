@@ -17,10 +17,10 @@
 	<![endif]-->
 
 	<!-- Le styles -->
-	<link href="{{ site.BASE_PATH }}/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="{{ site.BASE_PATH }}/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<link href="{{ site.BASE_PATH }}/assets/resources/syntax/syntax.css" rel="stylesheet">
-	<link href="{{ site.BASE_PATH }}/assets/css/style.css" rel="stylesheet">
+	<link href="{{ '/assets/resources/bootstrap/css/bootstrap.min.css' | relative_url }}" rel="stylesheet">
+	<link href="{{ '/assets/resources/font-awesome/css/font-awesome.min.css' | relative_url }}" rel="stylesheet">
+	<link href="{{ '/assets/resources/syntax/syntax.css' | relative_url }}" rel="stylesheet">
+	<link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet">
 
 	<!-- Le fav and touch icons -->
 	<!-- Update these with your own images
@@ -30,7 +30,10 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 	-->
 
-	<link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.BASE_PATH }}/feed.xml">
+<script>
+	var githubGlobalUsername = "{{site.author.github}}";
+ 	var githubGlobalRepository = "{{site.repositoryName}}";
+</script>
 </head>
 
 <body>
@@ -43,23 +46,24 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			{% if site.author.github %}
-			<a type="button" class="navbar-toggle nav-link" href="http://github.com/{{ site.author.github }}">
-				<i class="fa fa-github"></i>
-			</a>
-			{% endif %}
-			{% if site.author.twitter %}
-			<a type="button" class="navbar-toggle nav-link" href="http://twitter.com/{{ site.author.twitter }}">
-				<i class="fa fa-twitter"></i>
-			</a>
-			{% endif %}
+
 			{% if site.author.email %}
-			<a type="button" class="navbar-toggle nav-link" href="mailto:{{ site.author.email }}">
+			<a type="button" class="navbar-toggle nav-link" href="mailto:{{ site.author.email }}" title="{{site.author.email}}" target="_blank">
 				<i class="fa fa-envelope"></i>
 			</a>
 			{% endif %}
+			{% if site.author.linkedin %}
+			<a type="button" class="navbar-toggle nav-link" href="https://linkedin.com/in/{{ site.author.linkedin }}" target="_blank">
+				<i class="fa fa-linkedin"></i>
+			</a>
+			{% endif %}
+			{% if site.author.github %}
+			<a type="button" class="navbar-toggle nav-link" href="http://github.com/{{ site.author.github }}" target="_blank">
+				<i class="fa fa-github"></i>
+			</a>
+			{% endif %}
 			<a class="navbar-brand" href="{{ site.BASE_PATH }}/">
-				<img src="//www.gravatar.com/avatar/{{site.author.email_md5}}?s=35" class="img-circle" />
+				<img src="http://github.com/{{site.author.github}}.png?size=35" class="img-circle" />
 				{{ site.title }}
 			</a>
 		</div>
@@ -67,15 +71,35 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="{{ site.BASE_PATH }}/">Home</a></li>
-				<li><a href="{{ site.BASE_PATH}}/{{ site.categories_path }}">Categories</a></li>
-				<li><a href="{{ site.BASE_PATH}}/{{ site.tags_path }}">Tags</a></li>
+				<li class="active">
+				{% if site.author.bitbucket %}
+				<a type="button" class="navbar-toggle nav-link" href="https://bitbucket.org/{{ site.author.bitbucket }}" target="_blank">
+					<i class="fa fa-bitbucket"></i>
+					Bitbucket
+				</a>
+				{% endif %}
+				{% if site.author.facebook %}
+				<a type="button" class="navbar-toggle nav-link" href="https://twitter.com/{{ site.author.facebook }}" target="_blank">
+					<i class="fa fa-facebook"></i>
+					Facebook
+				</a>
+				{% endif %}
+				{% if site.author.twitter %}
+				<a type="button" class="navbar-toggle nav-link" href="https://twitter.com/{{ site.author.twitter }}" target="_blank">
+					<i class="fa fa-twitter"></i>
+					Twitter
+				</a>
+				{% endif %}
+				</li>
+				<!-- <li><a href="{{ site.BASE_PATH}}/{{ site.categories_path }}">Categories</a></li>
+				<li><a href="{{ site.BASE_PATH}}/{{ site.tags_path }}">Tags</a></li> -->
 			</ul>
-		</div><!-- /.navbar-collapse -->
+		</div>
+		<!-- /.navbar-collapse -->
 	</nav>
 
 	<!-- nav-menu-dropdown -->
-	<div class="btn-group hidden-xs" id="nav-menu">
+	<!-- <div class="btn-group hidden-xs" id="nav-menu">
 		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 			<i class="fa fa-bars"></i>
 		</button>
@@ -86,7 +110,7 @@
 			<li class="divider"></li>
 			<li><a href="#"><i class="fa fa-arrow-up"></i>Top of Page</a></li>
 		</ul>
-	</div>
+	</div> -->
 
 	<div class="col-sm-3 sidebar hidden-xs" style="{% if site.sidebar_background_image %}background: url({{site.sidebar_background_image}}) no-repeat !important;{% endif %}">
 		{% include sidebar.html %}
@@ -98,13 +122,13 @@
 		<footer>
 			<hr/>
 			<p>
-				&copy; {{ site.time | date: '%Y' }} {{ site.author.name }} with <a href="http://jekyllrb.com/">Jekyll</a>. Theme: <a href="https://github.com/dbtek/dbyll">dbyll</a> by dbtek.
+				&copy; {{ site.time | date: '%Y' }} {{ site.author.name }} <a href="{{site.author.url}}">{{site.author.url}}</a>.<br /><span style="color:rgb(147, 147, 147); font-size:.8vw"> A Fork of : <a href="https://github.com/dbtek/dbyll"> dbyll</a>-dbtek.</span>
 			</p>
 		</footer>
 	</div>
 
-	<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="{{ site.BASE_PATH }}/assets/js/app.js"></script>
+	<script type="text/javascript" src="{{ '/assets/resources/jquery/jquery.min.js' | relative_url }}"></script>
+	<script type="text/javascript" src="{{ '/assets/resources/bootstrap/js/bootstrap.min.js' | relative_url }}"></script>
+	<script type="text/javascript" src="{{ '/assets/js/app.js' | relative_url }}"></script>
 </body>
 </html>
